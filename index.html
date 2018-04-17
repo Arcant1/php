@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Libroteca</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- Para que la tabla se separe en cuadros -->
+	<style>
+		#div1 {
+    		overflow-y:scroll;
+    		height:500px;
+		}
+		#div1 table, th, td{
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		th{
+			cursor: pointer;
+		}
+		
+	</style>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="hola.html">Libroteca</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="login.html"><ins>Login</ins></a></li>
+        <li><a>|</a></li>        
+        <li><a href="usuario.html"><ins>Register</ins></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	<div class="container">
+  	<div class="row">
+    <div class="col-lg-4">
+		<img src="img/descarga.jpg">
+    </div>
+    <div class="col-lg-8">
+      <form>
+        <fieldset class="form-group">
+          <legend><b>Refinar b&uacutesqueda</b></legend>
+        	<br>
+          T&iacutetulo <input type="text" name="autor">
+        	<br>
+          <br>
+        	Autor <input type="text" name="libro">
+        	<input type="submit" name="enviar">
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+
+
+<h3> <b><ins><i>Cat&aacutelogo de libros</i></ins><b> </h3>
+<div id="div1">
+	<table style="width:100%" id="myTable">
+		<tr>
+			<th>
+				Portada
+			</th>
+			<th onclick="sortTable(1)">
+				T&iacutetulo
+			</th>
+			<th onclick="sortTable(2)">
+				Autor
+			</th>
+			<th>
+				Ejemplares
+			</th>
+		</tr>
+		<tr>
+			<td>
+				<img src="img/descarga.jpg">
+			</td>
+			<td>
+				<a href="lala.html"><ins>Professional PHP Design Pattenrs</ins></a>
+			</td>
+			<td>
+				<a href="leee.html"><ins>Aaron Saray</ins></a>
+			</td>
+			<td>
+				5
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="img/descarga.jpg">
+			</td>
+			<td>
+				<a href="lela.html"><ins>Ingenieria de Software</ins></a>
+			</td>
+			<td>
+				<a href="leeo.html"><ins>Ian Sommervi</ins></a>
+			</td>
+			<td>
+				3
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="img/descarga.jpg">
+			</td>
+			<td>
+				<a href="lela.html"><ins>Angel Software</ins></a>
+			</td>
+			<td>
+				<a href="leeo.html"><ins>Gan So</ins></a>
+			</td>
+			<td>
+				3
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="img/descarga.jpg">
+			</td>
+			<td>
+				<a href="lela.html"><ins>Cngenieria Software</ins></a>
+			</td>
+			<td>
+				<a href="leeo.html"><ins>Xan mervi</ins></a>
+			</td>
+			<td>
+				3
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="img/descarga.jpg">
+			</td>
+			<td>
+				<a href="lela.html"><ins>Lngenieria</ins></a>
+			</td>
+			<td>
+				<a href="leeo.html"><ins>Can om</ins></a>
+			</td>
+			<td>
+				3
+			</td>
+		</tr>
+	</table>
+</div>
+
+<!-- ver si dejar este script o hacerlo de otra manera-->
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.getElementsByTagName("TR");
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script> 
+<br>
+<br>
+<div class="container">
+  <div class="btn-group btn-group-justified">
+    <a href="index.html" class="btn btn-primary">Primera P&aacutegina</a>
+    <a href="javascript:history.go(-1)" class="btn btn-primary">P&aacutegina Anterior</a>
+    <a href="javascript:history.go(1)" class="btn btn-primary">P&aacutegina Siguiente</a>
+    <a href="index.html" class="btn btn-primary">&Uacuteltima P&aacutegina</a>
+  </div>
+</div>
+
+
+</body>
+</html>
