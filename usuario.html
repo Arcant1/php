@@ -2,40 +2,50 @@
 <html>
 <head>
 	<title>Usuario</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>Registro de usuario</h1>
+<div class="container">
+<center>
+<form class="form-signup">
+	<h1 style="text-align:center;">Registro de usuario</h1>
 	<form name="Registro" action="registrar.php" method="get">
-		<table>
+		<table width="50%" cellspacing="10" cellpadding="10">
 			<tr>
-				<td>Nombre</td>
-				<td><input type="text" name="nombre" required></td>
+				<td><label>Nombre</label> </td>
+				<td><input type="text" class="form-control" name="nombre" placeholder="Nombre" required></td>
 			</tr>
 			<tr>
-				<td>Apellido</td>
-				<td><input type="text" name="apellido" required></td>
+				<td><label>Apellido</label></td>
+				<td><input type="text" class="form-control" name="apellido" placeholder="Apellido" required></td>
 			</tr>
 			<tr>
-				<td>Foto</td>
-				<td><input type="file" name="Foto" accept="image/*" required></td>
+				<td><label>Foto</label></td>
+				<td><input type="file" class="form-control-file" name="Foto" accept="image/*" required></td>
 			</tr>
 			<tr>
-				<td>Email</td>
-				<td><input type="email" name="email" value="" required></td>
+				<td><label>Email</label></td>
+				<td><input type="email" class="form-control" name="email" value="" placeholder="Email" required></td>
 			</tr>
 			<tr>
-				<td>Clave</td>
-				<td><input type="password" placeholder="Enter password" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8.}" autocomplete="new-password" maxlength="8" required></td>
+				<td><label>Clave</label></td>
+				<td><input type="password" class="form-control" placeholder="Ingrese contraseña" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8.}" autocomplete="new-password" maxlength="8" required></td>
 			</tr>
 			<tr>
-				<td>Confirmaci&oacuten de la clave</td>
-				<td><input type="password" placeholder="Repeat password" name="psw-repeat" autocomplete="new-password" maxlength="8" required></td>
+				<td><label>Confirmaci&oacuten de la clave</label></td>
+				<td><input type="password" class="form-control" placeholder="Repita contraseña" name="psw-repeat" autocomplete="new-password" maxlength="8" required></td>
 			</tr>
 		</table>
 		<br>
-		<input type="submit" name="enviar" value="Registrarse">
+		<button type="submit" class="btn btn-primary">Registrarse</button>
 	</form>
-
+</form>
+</center>
+</div>
 				
 <!--<script>
 var myInput = document.getElementById("psw");
