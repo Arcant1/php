@@ -10,21 +10,11 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<!-- Para que la tabla se separe en cuadros -->
-	<style>
-		#div1 {
-    		overflow-y:scroll;
-    		height:500px;
-		}
-		#div1 table, th, td{
-			border: 1px solid black;
-			border-collapse: collapse;
-		}
-		th{
-			cursor: pointer;
-		}
-		
-	</style>
+
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<link href="css/index.css" rel="stylesheet">
 </head>
 <body>
 
@@ -51,6 +41,9 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<div class="container-fluid">
+	<div class="contariner-wrapper">
+		<div class="container">
   	<div class="row">
     <div class="col-md-3 col-lg-3" align="center">
 		<img class="img-circle img-responsive" src="img/logo.jpg" height="250" width="250">
@@ -73,8 +66,8 @@
 <br>
 
 
-<h3> <b><ins><i>Cat&aacutelogo de libros</i></ins><b> </h3>
-<div id="div1">
+<h3> <b><ins><i>Cat&aacutelogo de libros</i></ins></b> </h3>
+<div id="div1" class="#div1">
 	<table style="width:100%" id="myTable">
 		<tr>
 			<th>
@@ -171,6 +164,9 @@
 			</td>
 		</tr>
 	</table>
+</div>
+</div>
+</div>
 </div>
 
 <!-- ver si dejar este script o hacerlo de otra manera-->
