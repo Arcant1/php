@@ -1,5 +1,39 @@
-<!DOCTYPE html>
-<?php include('functions.php');?>
+<?php
+if(!empty($_POST)) {
+	require("classes/validate_user.php");
+	$validate = new Validate();
+	$validation = $validate->check($_POST, array(
+		'nombreUsuario' => array(
+			'required' => true,
+			'length_min' => 3,
+			'length_max' => 20,
+			'alphanumeric' => true,
+			'blacklist' => array(
+				'administrator',
+				'root',
+				'tux')
+		),
+		'password' => array('required' => true, 'length_min' => 8),
+		'confirmarPassword' => array('required' => true, 'matches' => 'password'),
+		'nombre' => array('required' => true, 'alphabetic' => true, 'length_max' => 30),
+		'apellido' => array('required' => true, 'alphabetic' => true, 'length_max' => 20),
+		'email' => array('required' => true, 'mailcheck' => true)
+	));
+	if($validation->passed()) {
+		echo 'Validation passed!';
+	}
+	else {
+		echo '<b>Error:</b>';
+		echo '<ul>';
+		foreach($validation->errors() as $error)
+		{
+			echo '<li>'.ucfirst($error).'</li>';
+		}
+		echo '</ul>';
+	}
+}
+?>
+
 <html>
 <head>
 	<title>Usuario</title>
@@ -8,10 +42,13 @@
 	<link rel="stylesheet" href="css/usuario.css">
 </head>
 <body>
+	<?php  
+	include_once("header.php");
+	?>
 	<div class="header">
 		<h1>Registro de usuario</h1>
 	</div>
-	<form name="Registro" action="register.php" method="POST">
+	<form name="Registro" action="validaciones/validate_user.php" method="POST">
 		<?php echo display_error(); ?>
 		<div class="input-group">
 			<label>Nombre de Usuario</label> 
