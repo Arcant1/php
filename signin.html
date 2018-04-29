@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Usuario</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+	<link rel="stylesheet" href="css/usuario.css">
+</head>
+<body>
+				<div class="header">
+					<h1>Registro de usuario</h1>
+				</div>
+				<form name="Registro" action="registrar.php" method="POST">
+					<!--<table width="50%" cellspacing="10" cellpadding="10">-->
+						<div class="input-group">
+							<label>Nombre</label> 
+							<input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+						</div>
+						<div class="input-group">
+							<label>Apellido</label>
+							<input type="text" class="form-control" name="apellido" placeholder="Apellido" required>
+						</div>
+						<div class="input-group">
+							<label>Foto</label>
+							<input type="file" class="form-control-file" name="Foto" accept="image/*" required>
+						</div>
+						<div class="input-group">
+							<label>Email</label>
+							<input type="email" class="form-control" name="email" value="" placeholder="Email" required>
+						</div>
+						<div class="input-group">
+							<label>Clave</label>
+							<input type="password" class="form-control" placeholder="Ingrese contraseña" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8.}" autocomplete="new-password" maxlength="8" required>
+						</div>
+						<div class="input-group">
+							<label>Confirmaci&oacuten de la clave</label>
+							<input type="password" class="form-control" placeholder="Repita contraseña" name="psw-repeat" autocomplete="new-password" maxlength="8" required>
+						</div>
+					<div class="input-group">
+					<button type="submit" class="btn btn-primary">Registrarse</button>
+					</div>
+				</form>
+	</div>
+</body>
+</html>
