@@ -10,93 +10,49 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="css/perfil.css" rel="stylesheet">
 </head>
 <body>
-	
-	<img src="img/descarga.jpg">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Libroteca</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="login.html"><ins>Login</ins></a></li>
+        <li><a>|</a></li>        
+        <li><a href="usuario.html"><ins>Register</ins></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="container-fluid">
+  <div class="container-wrapper">
+	<img class="img-circle img-responsive" src="img/logo.jpg" height="250" width="250">
+
 <br>
 <br>
 
-<h2> <b><ins><i>Mi Perfil</i></ins></b></h2>
-<!--<div class="container">
-	<div class="row">
-		<div class="col-lg-4">
-			<form name="formulario" action="" method="post">
-				<label for="text">Nombre:</label>
-				<label for="text">Carlos</label>
-				<br>
-				<br>
-				<label for="text">Apellido:</label>
-				<label for="text">Volarta</label>
-				<br>
-				<br>
-				<label for="email">Email:</label>
-				<label for="text">cvolarta@gmail.com</label>
-				<br>
-				<a class="btn btn-primary" href="C:/Users/kbza_/OneDrive/Escritorio/Pagina/index.html">Volver</a>
-			</form>
-		</div>
-		<div class="col-lg-4">
-			<img src="img/descarga.jpg">
-		</div>
-	</div>
-	
-</div>-->
 <div class="toppad" >
-   
-   
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">Mauro Bob</h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="img/descarga.jpg" class="img-circle img-responsive"> </div>
-                
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                  <dl>
-                    <dt>DEPARTMENT:</dt>
-                    <dd>Administrator</dd>
-                    <dt>HIRE DATE</dt>
-                    <dd>11/12/2013</dd>
-                    <dt>DATE OF BIRTH</dt>
-                       <dd>11/12/2013</dd>
-                    <dt>GENDER</dt>
-                    <dd>Male</dd>
-                  </dl>
-                </div>-->
-                <div class=" col-md-9 col-lg-9 "> 
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td>Carrera</td>
-                        <td>Ingenieria en Computaci&oacuten</td>
-                      </tr>
-                      <tr>
-                        <td>Fecha de nacimiento</td>
-                        <td>01/04/1991</td>
-                      </tr>
-                   
-                       
-                      <tr>
-                        <td>G&eacutenero</td>
-                        <td>Masculino</td>
-                      </tr>
-                        <tr>
-                        <td>Ciudad</td>
-                        <td>La Plata</td>
-                      </tr>
-                      <tr>
-                        <td>Email</td>
-                        <td><a href="maurobob@gmail.com">maurobob@gmail.com</a></td>
-                      </tr>
-                     
-                    </tbody>
-                  </table>
-                  
-                  <a href="C:/Users/kbza_/OneDrive/Escritorio/Pagina/index.html" class="btn btn-primary">Volver</a>
-                </div>
-              </div>
+              <div class="card">
+                <img src="img/six.jpg" alt="John" style="width:100%">
+                <h1>Mauro Bob</h1>
+                <p class="title">CEO & Founder, Example</p>
+                <p>Harvard University</p>
+                <p><button>Contact</button></p>
             </div>
 
         </div>
@@ -104,5 +60,106 @@
 <br>
 <br>
 
-<center><h2><b><ins><i>Historial de operaciones</i></ins></b></h2></center>
+<center><h3><b><ins><i>Historial de operaciones</i></ins></b></h3></center>
+<div id="div1" class="#div1">
+  <table style="width:100%" id="myTable">
+    <tr>
+      <th>
+        Portada
+      </th>
+      <th onclick="sortTable(1)">
+        T&iacutetulo
+      </th>
+      <th onclick="sortTable(2)">
+        Autor
+      </th>
+      <th>
+        Ejemplares
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <div align="center">
+        <img src="img/professional php.jpg" height="250" width="220">
+        </div>
+      </td>
+      <td>
+        <a href="lala.html"><ins>Professional PHP Design Pattenrs</ins></a>
+      </td>
+      <td>
+        <a href="leee.html"><ins>Aaron Saray</ins></a>
+      </td>
+      <td>
+        5
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div align="center">  
+        <img src="img/Ingenieria de software.jpg" height="250" width="220">
+        </div>
+      </td>
+      <td>
+        <a href="lela.html"><ins>Ingenieria de Software</ins></a>
+      </td>
+      <td>
+        <a href="leeo.html"><ins>Ian Sommervi</ins></a>
+      </td>
+      <td>
+        3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div align="center">
+        <img src="img/Ingenieria de software 1.jpg" height="250" width="220">
+      </div>
+      </td>
+      <td>
+        <a href="lela.html"><ins>Angel Software</ins></a>
+      </td>
+      <td>
+        <a href="leeo.html"><ins>Gan So</ins></a>
+      </td>
+      <td>
+        3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div align="center">
+        <img src="img/Ingenieria de software 2.jpg" height="250" width="220">
+      </div>
+      </td>
+      <td>
+        <a href="lela.html"><ins>Cngenieria Software</ins></a>
+      </td>
+      <td>
+        <a href="leeo.html"><ins>Xan mervi</ins></a>
+      </td>
+      <td>
+        3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div align="center">
+        <img src="img/Ingenieria de software 3.jpg" height="250" width="220">
+      </div>
+      </td>
+      <td>
+        <a href="lela.html"><ins>Lngenieria</ins></a>
+      </td>
+      <td>
+        <a href="leeo.html"><ins>Can om</ins></a>
+      </td>
+      <td>
+        3
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</div>
+</body>
 </html>
