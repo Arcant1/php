@@ -42,14 +42,11 @@ if(!empty($_POST)) {
 	<link rel="stylesheet" href="css/usuario.css">
 </head>
 <body>
-	<?php  
-	include_once("header.php");
-	?>
+	
 	<div class="header">
 		<h1>Registro de usuario</h1>
 	</div>
-	<form name="Registro" action="validaciones/validate_user.php" method="POST">
-		<?php echo display_error(); ?>
+	<form name="Registro" method="POST">
 		<div class="input-group">
 			<label>Nombre de Usuario</label> 
 			<input type="text" class="form-control" name="nombreUsuario" placeholder="Nombre de usuario" value="">

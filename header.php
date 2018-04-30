@@ -1,6 +1,10 @@
 <header>
     <div class="container">
+
         <div class="row">
+            <div class="col-md-4">
+                <h2 align=center>Bienvenido a La biblioteca de tu vieja!</h2>
+            </div>
             <div class="col-md-4">
                 <br>
                 <form class="navbar-form navbar-left" role="search" action="validaciones/validarSearch.php" method="get">
@@ -17,9 +21,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-4">
-                <h2 align=center>Bienvenido a La biblioteca de tu vieja!</h2>
-            </div>
+            
             <div class="col-md-4">
             <br><br>
                 <div class="dropdown">
