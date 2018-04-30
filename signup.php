@@ -46,7 +46,7 @@ if(!empty($_POST)) {
 	<div class="header">
 		<h1>Registro de usuario</h1>
 	</div>
-	<form name="Registro" method="POST">
+	<form name="Registro" action="validaciones/validarRegistro.php" method="POST">
 		<div class="input-group">
 			<label>Nombre de Usuario</label> 
 			<input type="text" class="form-control" name="nombreUsuario" placeholder="Nombre de usuario" value="">
