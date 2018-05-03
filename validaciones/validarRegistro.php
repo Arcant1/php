@@ -1,7 +1,7 @@
 <?php
 
 if(!empty($_POST)) {
-	require("validate_user.php");
+	require("/classes/Validate.php");
 	$validate = new Validate();
 	$validation = $validate->check($_POST, array(
 		'nombreusuario' => array(
