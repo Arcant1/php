@@ -10,11 +10,6 @@
         		Theme Elements
 *********************************************/
 
-.gold{
-	color: #FFBF00;
-}
-
-
 #div1 {
 	overflow-y:scroll;
 	height:500px;
@@ -33,7 +28,6 @@ th{
 
 .content-wrapper {
 	max-width: 1140px;
-	background: #fff;
 	margin: 0 auto;
 	margin-top: 25px;
 	margin-bottom: 10px;
