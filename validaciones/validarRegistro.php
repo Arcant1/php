@@ -1,7 +1,7 @@
 <?php
 
 if(!empty($_POST)) {
-	require("/classes/Validate.php");
+	require("../classes/Validate.php");
 	$validate = new Validate();
 	$validation = $validate->check($_POST, array(
 		'nombreusuario' => array(
@@ -59,16 +59,9 @@ if($validation->passed())
 	
 	if($empty)
 	{
-		$insertar = "INSERT INTO usuarios (email, nombreusuario,apellido,foto,password,rol) VALUES('$email','$nombreusuario','$apellido','$foto','$contrasenia','$rol')";
-		if($link->query($insertar) === TRUE)
-		{
-			echo "New record created";
-		}
-		else
-		{
-			echo "ERROR: " . $insertar ."<br>" .$link->error;
-		}
-		//mysqli_query($link,$insertar);
+		$insertar = "INSERT INTO usuarios (email, nombreusuario,apellido,foto,password,rol) VALUES($email','$nombreusuario','$apellido','$foto','$contrasenia','$rol')";
+		mysqli_query($link,$insertar);
+		
 		mysqli_close($link);
 		header("Location: ../?msg=1");
 	}
