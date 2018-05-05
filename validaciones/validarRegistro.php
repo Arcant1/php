@@ -44,31 +44,52 @@ if($validation->passed())
 	$email = $_POST['email'];
 	$contrasenia = $_POST['password'];
 	$recontrasenia = $_POST['confirmarpassword'];
-	$foto = $_POST['foto'];
-	$rol = $_POST['rol'];
+	//$foto = $_POST['foto'];
 	
+	if(isset($_FILES['inputImg']['size']) && !empty($_FILES['inputImg']['size'])){
+    //cargar imagen
+		if($_FILES['inputImg']['size']<60000){
+			$tmpName = $_FILES['inputImg']['tmp_name'];
+			$fp = fopen($tmpName, 'r');
+			$contenidoImagen = fread($fp, filesize($tmpName));
+			$contenidoImagen = addslashes($contenidoImagen);
+			fclose($fp);
+			$tipoImagenAux=$_FILES['inputImg']['type'];
+			$tipoImagen = substr($tipoImagenAux, 6);
+		}else{
+			$fail=true;
+      $error= 1; //error de tamaño
+   }
+}else {
+    $error= 2; //error en la imagen
+    $fail=true;
+ }
+
+ $rol = $_POST['rol'];
+ 
 	//comprueba que ya no exista ese mail
-	$con = "SELECT email FROM usuarios WHERE email = '$email'";
-	
-	$result = mysqli_query($link,$con);
-	$empty= 0;
-	if(mysqli_num_rows($result)==0)
-	{
-		$empty= 1;
-	}
-	
-	if($empty)
-	{
-		$insertar = "INSERT INTO usuarios (email, nombreusuario,apellido,foto,password,rol) VALUES($email','$nombreusuario','$apellido','$foto','$contrasenia','$rol')";
-		mysqli_query($link,$insertar);
-		
-		mysqli_close($link);
-		header("Location: ../?msg=1");
-	}
-	else
-	{
-		header("Location: ../signup.php?msg=2");
-	}
+ $con = "SELECT email FROM usuarios WHERE email = '$email'";
+ 
+ $result = mysqli_query($link,$con);
+ $empty= 0;
+ if(mysqli_num_rows($result)==0)
+ {
+ 	$empty= 1;
+ }
+ 
+ if($empty)
+ {
+ 	$insertar = "INSERT INTO usuarios (email, nombreusuario,nombre,apellido,foto,password,rol) VALUES('$email','$nombreusuario','$nombre','$apellido','$foto','$contrasenia','$rol')";
+ 	echo $insertar;
+ 	mysqli_query($link,$insertar);
+ 	
+ 	mysqli_close($link);
+		//header("Location: ../?msg=1");
+ }
+ else
+ {
+ 	header("Location: ../signup.php?msg=2");
+ }
 }
 
 //No superó la validación
