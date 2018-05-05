@@ -100,8 +100,6 @@ if ($uploadOk == 0) {
     }
 }
 
-
-
  $rol = $_POST['rol'];
 
 	//comprueba que ya no exista ese mail
@@ -116,6 +114,9 @@ if ($uploadOk == 0) {
 
  if($empty)
  {
+ 	/*ver esto agregado por BOB
+ 	$insertar="INSERT INTO `usuarios` VALUES ( NULL , '$email','$nombreUsuario', '$nombre', '$apellido','$contenidoImagen','$contrasenia','$rol')";
+    */
  	$insertar = "INSERT INTO usuarios(email,nombreusuario,nombre,apellido,foto,password,rol)VALUES('$email','$nombreusuario','$nombre','$apellido','$contenidoImagen','$contrasenia','$rol')";
  	echo $insertar;
  	mysqli_query($link,$insertar);

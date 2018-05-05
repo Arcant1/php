@@ -3,7 +3,7 @@
 
         <div class="row">
             <div class="col-md-4">
-                <h2 align=center>Bienvenido a La biblioteca de tu vieja!</h2>
+                <h2 align=center>Bienvenido a La Libroteca</h2>
             </div>
             <div class="col-md-4">
                 <br>
