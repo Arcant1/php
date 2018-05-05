@@ -9,7 +9,7 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
  </head>
-<body>
+<body background="img/fondo.jpg">
   <div class="container">
     <form class="form-signin">
       <h2 class="form-signin-heading">Ingrese sus datos</h2>

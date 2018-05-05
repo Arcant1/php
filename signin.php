@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilos.css">
   </head>
-  <body>
+  <body  background="img/fondo.jpg">
     <?php  
       include_once("header.php");
     ?>

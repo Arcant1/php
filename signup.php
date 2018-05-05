@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/usuario.css">
 </head>
-<body>
+<body  background="img/fondo.jpg">
 
 	<div class="header">
 		<h1>Registro de usuario</h1>
