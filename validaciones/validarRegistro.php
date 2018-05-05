@@ -38,6 +38,8 @@ if($validation->passed())
 {
 	include("../funciones/conexion.php");
 	$link = conectar();
+	$error="";
+	$fail=false;
 	$nombre = $_POST['nombre'];
 	$apellido = $_POST['apellido'];
 	$nombreusuario = $_POST['nombreusuario'];
@@ -46,45 +48,80 @@ if($validation->passed())
 	$recontrasenia = $_POST['confirmarpassword'];
 	//$foto = $_POST['foto'];
 	
-	if(isset($_FILES['inputImg']['size']) && !empty($_FILES['inputImg']['size'])){
-    //cargar imagen
-		if($_FILES['inputImg']['size']<60000){
-			$tmpName = $_FILES['inputImg']['tmp_name'];
+
+   //cargar imagen
+	$target_dir = "../";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+}
+// Check if file already exists
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        	$tmpName = $_FILES["fileToUpload"]["tmp_name"];
 			$fp = fopen($tmpName, 'r');
 			$contenidoImagen = fread($fp, filesize($tmpName));
 			$contenidoImagen = addslashes($contenidoImagen);
 			fclose($fp);
-			$tipoImagenAux=$_FILES['inputImg']['type'];
-			$tipoImagen = substr($tipoImagenAux, 6);
-		}else{
-			$fail=true;
-      $error= 1; //error de tamaño
-   }
-}else {
-    $error= 2; //error en la imagen
-    $fail=true;
- }
+
+    } else 
+    {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+
+
 
  $rol = $_POST['rol'];
- 
+
 	//comprueba que ya no exista ese mail
  $con = "SELECT email FROM usuarios WHERE email = '$email'";
- 
+
  $result = mysqli_query($link,$con);
  $empty= 0;
  if(mysqli_num_rows($result)==0)
  {
  	$empty= 1;
  }
- 
+
  if($empty)
  {
- 	$insertar = "INSERT INTO usuarios (email, nombreusuario,nombre,apellido,foto,password,rol) VALUES('$email','$nombreusuario','$nombre','$apellido','$foto','$contrasenia','$rol')";
+ 	$insertar = "INSERT INTO usuarios(email,nombreusuario,nombre,apellido,foto,password,rol)VALUES('$email','$nombreusuario','$nombre','$apellido','$contenidoImagen','$contrasenia','$rol')";
  	echo $insertar;
  	mysqli_query($link,$insertar);
- 	
+
  	mysqli_close($link);
-		//header("Location: ../?msg=1");
+	//header("Location: ../?msg=1");
  }
  else
  {
