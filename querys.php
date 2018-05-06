@@ -1,7 +1,7 @@
 <?php
-require_once '../funciones/conexion.php';
+  require_once 'conection.php';
 
-$count = 0;
+  $count = 0;
 
 /*----------------------------------------------------------------------------*-
   SEARCH devuelve el resultado de la busqueda correspondiente a los parametros
@@ -15,63 +15,63 @@ $count = 0;
   En caso de mysql error produce un die() con el nombre del error.
 */
   function search_query($q, $cat, $ord, $page) {
-  	global $count;
+    global $count;
 
-  	$db=conectar();
+    $db=db_connect();
     // establecer fecha
-  	$date = date("Y-m-d");
+    $date = date("Y-m-d");
     // establecer strin de busqueda
-  	$name = $q;
+    $name = $q;
     // establecer categoria
-  	if ($cat > 0) {
-  		$categoria = "AND idCategoriaProducto=$cat";
-  	}else {
-  		$categoria = "";
-  	}
+    if ($cat > 0) {
+      $categoria = "AND idCategoriaProducto=$cat";
+    }else {
+      $categoria = "";
+    }
     // establecer orden
-  	switch ($ord){
-  		case "Min" :
-  		$orden = "precio ASC";
-  		break;
-  		case "Max" :
-  		$orden = "precio DESC";
-  		break;
-  		case "Old" :
-  		$orden = "publicacion ASC";
-  		break;
-  		default:
-  		$orden = "publicacion DESC";
-  	}
+    switch ($ord){
+      case "Min" :
+         $orden = "precio ASC";
+        break;
+      case "Max" :
+        $orden = "precio DESC";
+        break;
+      case "Old" :
+        $orden = "publicacion ASC";
+        break;
+      default:
+        $orden = "publicacion DESC";
+    }
     // establecer pagina
-  	$pageLimit=$page*9-9;
+    $pageLimit=$page*9-9;
 
     // string del query
-  	$query = "SELECT * FROM productos WHERE caducidad>\"$date\" $categoria AND nombre LIKE (\"%$name%\") ORDER BY $orden LIMIT $pageLimit, 9";
+    $query = "SELECT * FROM productos WHERE caducidad>\"$date\" $categoria AND nombre LIKE (\"%$name%\") ORDER BY $orden LIMIT $pageLimit, 9";
 
     // realizar query
-  	$result = mysqli_query($db,$query);
+    $result = mysqli_query($db,$query);
 
-  	if(!($result)){
-  		echo "error en el query";
-  	}
+    if(!($result)){
+      echo "error en el query";
+    }
 
-  	/* calcular la cantidad de productos que cumplen con la busqueda */
+    /* calcular la cantidad de productos que cumplen con la busqueda */
     // string del query
-  	$query = "SELECT COUNT(*) AS \"cant\" FROM productos WHERE caducidad>\"$date\" $categoria AND nombre LIKE (\"%$name%\")";
+    $query = "SELECT COUNT(*) AS \"cant\" FROM productos WHERE caducidad>\"$date\" $categoria AND nombre LIKE (\"%$name%\")";
 
     // realizar query
-  	$result_count = mysqli_query($db,$query);
+    $result_count = mysqli_query($db,$query);
 
     //cantidad guardada en $count
-  	if($result_count){
-  		$row = mysqli_fetch_array ($result_count);
-  		$count = $row['cant'];
-  	}else {
-  		echo "error en el query";
-  	}
+    if($result_count){
+      $row = mysqli_fetch_array ($result_count);
+      $count = $row['cant'];
+    }else {
+      echo "error en el query";
+    }
 
-  	db_close();
-  	return $result;
+    db_close();
+    return $result;
   }
 
 /*----------------------------------------------------------------------------*-
@@ -80,8 +80,8 @@ $count = 0;
   Devuelve la cantidad de productos que cumplen con la ultima busqueda realizada
 */
   function search_query_count() {
-  	global $count;
-  	return $count;
+    global $count;
+    return $count;
   }
 
 /*----------------------------------------------------------------------------*-
@@ -93,25 +93,25 @@ $count = 0;
   Devuelve el nombre de la categoria con id $cat_id
 */
   function get_category_name($cat_id) {
-  	$db=db_connect();
+    $db=db_connect();
 
     // string del query
-  	$query = "SELECT nombre FROM `categorias_productos` WHERE idCategoriaProducto = $cat_id ";
+    $query = "SELECT nombre FROM `categorias_productos` WHERE idCategoriaProducto = $cat_id ";
 
     // realizar query
-  	$result = mysqli_query($db,$query);
+    $result = mysqli_query($db,$query);
 
     //resolver resultado
-  	$cat = "";
-  	if($result){
-  		$row = mysqli_fetch_array ($result);
-  		$cat = utf8_encode($row['nombre']);
-  	}else {
-  		echo "error en el query";
-  	}
+    $cat = "";
+    if($result){
+      $row = mysqli_fetch_array ($result);
+      $cat = utf8_encode($row['nombre']);
+    }else {
+      echo "error en el query";
+    }
 
-  	db_close();
-  	return $cat;
+    db_close();
+    return $cat;
   }
 
 /*----------------------------------------------------------------------------*-
@@ -124,75 +124,25 @@ $count = 0;
   especifica la cantidad devuelve todas
 */
   function get_categories($param = 0) {
-  	$db=db_connect();
+    $db=db_connect();
 
     // string del query
-  	if ($param <= 0) {
-  		$query = "SELECT * FROM `categorias_productos`";
-  	}else {
-  		$query = "SELECT * FROM `categorias_productos` LIMIT 0, $param";
-  	}
+    if ($param <= 0) {
+      $query = "SELECT * FROM `categorias_productos`";
+    }else {
+      $query = "SELECT * FROM `categorias_productos` LIMIT 0, $param";
+    }
 
     // realizar query
-  	$result = mysqli_query($db,$query);
+    $result = mysqli_query($db,$query);
 
-  	if(!($result)){
-  		echo "error en el query";
-  	}
+    if(!($result)){
+      echo "error en el query";
+    }
 
-  	db_close();
-  	return $result;
+    db_close();
+    return $result;
   }
-
-/*
-
-AUTORES
-
-*/
-
-function get_libro($nombre_libro)
-{
-	$db = conectar();
-	$query = "SELECT * FROM libros WHERE titulo LIKE %$nombre_libro%";
-	$result = mysqli_query($db,$query);
-	if(!($result)){
-  		echo "error en el query";
-  	}
-
-  	db_close();
-  	return $result;
-}
-
-function get_cant_libros($nombre_libro, $id_libro)
-{
-	$db = conectar();
-	$query = "SELECT COUNT(*) FROM libros WHERE titulo LIKE %$nombre_libro% GROUP BY $id_libro";
-	$result = mysqli_query($db,$query);
-	if(!($result)){
-  		echo "error en el query";
-  	}
-
-  	db_close();
-  	return $result;
-}
-
-
-
-function get_autores($autor_id)
-{
-	$db = conectar();
-	$query = "SELECT * FROM autores WHERE id = $autor_id";
-	$result = mysqli_query($db,$query);
-	if(!($result)){
-  		echo "error en el query";
-  	}
-
-  	db_close();
-  	return $result;
-
-}
-
-
 
 /*----------------------------------------------------------------------------*-
   PRODUCT
@@ -203,20 +153,20 @@ function get_autores($autor_id)
   Devuelve el producto buscado
 */
   function get_product($prod_id) {
-  	$db=db_connect();
+    $db=db_connect();
 
     // string del query
-  	$query = "SELECT * FROM productos WHERE idProducto = $prod_id";
+    $query = "SELECT * FROM productos WHERE idProducto = $prod_id";
 
     // realizar query
-  	$result = mysqli_query($db,$query);
+    $result = mysqli_query($db,$query);
 
-  	if(!($result)){
-  		echo "error en el query";
-  	}
+    if(!($result)){
+      echo "error en el query";
+    }
 
-  	db_close();
-  	return $result;
+    db_close();
+    return $result;
   }
 
 /*----------------------------------------------------------------------------*-
@@ -228,20 +178,20 @@ function get_autores($autor_id)
   Devuelve el usuario buscado
 */
   function get_user($user_id) {
-  	$db=db_connect();
+    $db=db_connect();
 
     // string del query
-  	$query = "SELECT * FROM usuarios WHERE idUsuario=$user_id";
+    $query = "SELECT * FROM usuarios WHERE idUsuario=$user_id";
 
     // realizar query
-  	$result = mysqli_query($db,$query);
+    $result = mysqli_query($db,$query);
 
-  	if(!($result)){
-  		echo "error en el query";
-  	}
+    if(!($result)){
+      echo "error en el query";
+    }
 
-  	db_close();
-  	return $result;
+    db_close();
+    return $result;
   }
 
 /*----------------------------------------------------------------------------*-
@@ -253,38 +203,38 @@ function get_autores($autor_id)
   Devuelve los productos publicados por el usuario buscado
 */
   function search_query_user($page,$id) {
-  	global $count;
+    global $count;
 
-  	$db=db_connect();
+    $db=db_connect();
 
     // establecer pagina y orden
-  	$pageLimit=$page*9-9;
-  	$orden = "titulo DESC";
+    $pageLimit=$page*9-9;
+    $orden = "publicacion DESC";
     // string del query
-  	$query = "SELECT * FROM libros WHERE autores_id=\"$id\" ORDER BY $orden LIMIT $pageLimit, 9";
+    $query = "SELECT * FROM productos WHERE idUsuario=\"$id\" ORDER BY $orden LIMIT $pageLimit, 9";
     // realizar query
-  	$result = mysqli_query($db,$query);
+    $result = mysqli_query($db,$query);
 
-  	if(!($result)){
-  		echo "error en el query";
-  	}
+    if(!($result)){
+      echo "error en el query";
+    }
 
-  	/* calcular la cantidad de productos que cumplen con la busqueda */
+    /* calcular la cantidad de productos que cumplen con la busqueda */
     // string del query
-  	$query = "SELECT COUNT(*) AS \"cant\" FROM libros WHERE autores_id='" . $id . "'";
+    $query = "SELECT COUNT(*) AS \"cant\" FROM productos WHERE idUsuario='" . $id . "'";
     // realizar query
-  	$result_count = mysqli_query($db,$query);
+    $result_count = mysqli_query($db,$query);
 
     //cantidad guardada en $count
-  	if($result_count){
-  		$row = mysqli_fetch_array ($result_count);
-  		$count = $row['cant'];
-  	}else {
-  		echo "error en el query";
-  	}
+    if($result_count){
+      $row = mysqli_fetch_array ($result_count);
+      $count = $row['cant'];
+    }else {
+      echo "error en el query";
+    }
 
-  	db_close();
-  	return $result;
+    db_close();
+    return $result;
   }
 
 /*----------------------------------------------------------------------------*-
@@ -297,30 +247,30 @@ function get_autores($autor_id)
   Devuelve true si el usuario es el dueño del producto, false en caso contrario
 */
   function is_owner($user_id, $prod_id) {
-  	$db=db_connect();
+    $db=db_connect();
 
     // string del query
-  	$query = "SELECT idUsuario FROM productos WHERE idProducto = $prod_id";
+    $query = "SELECT idUsuario FROM productos WHERE idProducto = $prod_id";
 
     // realizar query
-  	$result = mysqli_query($db,$query);
+    $result = mysqli_query($db,$query);
 
-  	db_close();
-  	if($result){
-  		if (mysqli_num_rows($result)) {
-  			$row = mysqli_fetch_array ($result);
-  			if ($row['idUsuario'] == $user_id) {
-  				return true;
-  			}
-  			else {
-  				return false;
-  			}
-  		}else{
-  			echo "el producto no existe";
-  		}
-  	}else {
-  		echo "error en el query";
-  	}
+    db_close();
+    if($result){
+      if (mysqli_num_rows($result)) {
+        $row = mysqli_fetch_array ($result);
+        if ($row['idUsuario'] == $user_id) {
+          return true;
+        }
+        else {
+          return false;
+        }
+      }else{
+        echo "el producto no existe";
+      }
+    }else {
+      echo "error en el query";
+    }
   }
   /*----------------------------------------------------------------------------*-
     PRODUCT OWNER
@@ -331,25 +281,25 @@ function get_autores($autor_id)
     Devuelve el id del usuario dueño del producto
   */
     function product_owner($prod_id) {
-    	$db=db_connect();
+      $db=db_connect();
 
       // string del query
-    	$query = "SELECT idUsuario FROM productos WHERE idProducto = $prod_id";
+      $query = "SELECT idUsuario FROM productos WHERE idProducto = $prod_id";
 
       // realizar query
-    	$result = mysqli_query($db,$query);
+      $result = mysqli_query($db,$query);
 
-    	db_close();
-    	if($result){
-    		if (mysqli_num_rows($result)) {
-    			$row = mysqli_fetch_array ($result);
-    			return $row['idUsuario'];
-    		}else{
-    			return -1;
-    		}
-    	}else {
-    		echo "error en el query";
-    	}
+      db_close();
+      if($result){
+        if (mysqli_num_rows($result)) {
+          $row = mysqli_fetch_array ($result);
+          return $row['idUsuario'];
+        }else{
+          return -1;
+        }
+      }else {
+        echo "error en el query";
+      }
     }
 
-    ?>
+?>

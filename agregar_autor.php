@@ -22,13 +22,14 @@
 			<input type="text" class="form-control" name="nombre" placeholder="nombre" id="nombre">
 		</div>
 		
-				
+		
 		<div class="input-group">
 			<button type="submit" value="Submit" name="submit" id="submit" class="btn btn-primary">Agregar Autor</button>
 		</div>
 	</form>
 
 	<script type="text/javascript" src="js/validarAutor.js"></script>
+	
 </div>
 </body>
 </html>
