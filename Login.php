@@ -1,15 +1,19 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <title>Iniciar sesión</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
- </head>
-<body background="img/fondo.jpg">
+</head>
+<body background="../img/fondo.jpg">
   <div class="container">
     <form class="form-signin">
       <h2 class="form-signin-heading">Ingrese sus datos</h2>
@@ -25,5 +29,8 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
     </form>
   </div>
+  <?php
+  include("footer.php");
+  ?>
 </body>
 </html>

@@ -1,54 +1,25 @@
 <header>
-    <div class="container">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href='index.php'>Libroteca</a>
+			</div>
 
-        <div class="row">
-            <div class="col-md-4">
-                <h2 align=center>Bienvenido a La Libroteca</h2>
-            </div>
-            <div class="col-md-4">
-                <br>
-                <form class="navbar-form navbar-left" role="search" action="validaciones/validarSearch.php" method="get">
-                    <div class="form-group">
-                        <label class="radio-inline"><input type="radio" name="search-type" value="anio">Año</label>
-                        <label class="radio-inline"><input type="radio" name="search-type" value="genero">Genero</label>
-                        <label class="radio-inline"><input type="radio" name="search-type" value="nombre">Nombre</label>
-                        <br>
-                        <br>
-                        <input type="text" class="form-control" placeholder="Buscar" name="search">
-                        <button type="submit" class="btn btn-primary">Buscar</button>
-                        <br>
-                        <br>
-                    </div>
-                </form>
-            </div>
-            
-            <div class="col-md-4">
-                <br><br>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Menu <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <?php
-                        if(isset($_SESSION['estado'])){
-                            echo "<li><a href='funciones/cerrar.php'>Cerrar Sesion</a></li>";
-                            echo " ";
-                            echo "<li><a href='/Test/profile.php'>Perfil</a></li>";
-                            echo " ";
-                            if(isset($_SESSION['admin'])){
-                                echo "<li><a href='/Test/new_movie.php'>Add Movie</a></li>";
-                                echo " ";
-                                echo "<li><a href='/Test/delete_movie.php'>Delete Movie</a></li>";
-                                echo " ";
-                            }
-                        }else{
-                            echo "<li><a href='/Test/signup.php'>Registrarse</a></li>";
-                            echo " ";
-                            echo "<li><a href='/Test/signin.php'>Iniciar Sesion</a></li>";
-                        }
-                        ?>
-                    </ul>
-                    <a class='btn btn-primary' href='/Test/index.php'>Index</a> 
-                </div>  
-            </div>
-        </div>
-    </div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href='login.php'><ins>Login</ins></a></li>
+					<li><a>|</a></li>        
+					<li><a href='signup.php'><ins>Register</ins></a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
 </header>
