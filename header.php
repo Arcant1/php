@@ -13,13 +13,19 @@
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
+			
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href='login.php'><ins>Login</ins></a></li>
 					<li><a>|</a></li>        
 					<li><a href='signup.php'><ins>Register</ins></a></li>
+					<li><a>|</a></li>        
+					<li><a href='agregar_libro.php'><ins>Agregar Libro</ins></a></li>
+					<li><a>|</a></li>        
+					<li><a href='agregar_autor.php'><ins>Agregar Autor</ins></a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
+
 		</div><!-- /.container-fluid -->
 	</nav>
 </header>
