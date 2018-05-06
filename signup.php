@@ -10,7 +10,7 @@
 		<h1>Registro de usuario</h1>
 	</div>
 
-	<form name="Registro" action="validaciones/validarRegistro.php" method="POST" enctype="multipart/form-data">
+	<form name="Registro" action="validaciones/validarRegistro.php" method="post" role="form" enctype="multipart/form-data">
 		<div class="input-group">
 			<label>Nombre de Usuario</label> 
 			<input type="text" class="form-control" name="nombreusuario" placeholder="Nombre de usuario" id="nombreusuario">
@@ -42,10 +42,11 @@
 					</datalist>
 				</div>
 
-				<div class="form-group" id="inputImg_g">
-					<label>Cargar imagen</label>
-    				<input type="file" name="fileToUpload" id="fileToUpload">
-				</div>
+				 <div class="form-group" id="inputImg_g">
+              <label for="foto">Cargar imagen</label>
+              <input type="file" name="foto" id="foto">
+              <span id="inputImg_error"></span>
+            </div>
 
 				<div class="input-group">
 					<label>Email</label>
