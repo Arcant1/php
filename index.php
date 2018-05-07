@@ -33,12 +33,13 @@
 						<img class="img-circle img-responsive" src="img/logo.jpg" height="250" width="250">
 					</div>
 					<div class="col-md-3 col-lg-3"></div>
-					<div class=" col-md-4 col-lg-4" style="background-color: grey">
+					<div class="col-md-4 col-lg-4" style="background-color: grey">
 						<form>
 							<fieldset class="form-group">
 								<legend><b>Refinar b&uacutesqueda</b></legend>
 								<br>
-								<label>T&iacutetulo</label> <input type="text" class="form-control" name="autor">
+								<label>T&iacutetulo</label>
+								<input type="text" class="form-control" name="autor">
 								<br>
 								<br>
 								<label>Autor</label> <input type="text" class="form-control" name="libro">
